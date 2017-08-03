@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "~1.17.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "~1.4.3",
+    "cookie-session": "^2.0.0-beta.2",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-session": "^1.15.4",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "passport": "^0.3.2",
+    "passport-stocktwits": "0.0.2",
+    "serve-favicon": "~2.4.2",
+    "yahoo-stocks": "^2.0.0"
+  }
+}
