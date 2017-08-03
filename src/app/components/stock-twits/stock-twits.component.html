@@ -1,3 +1,39 @@
-<b>
-  {{token}}
-</b>
+ <table class="table-condensed table-bordered table-hover">
+ 	<thead>
+	<tr>
+		<th class="text-center">Stock</th>
+		<th class="text-center">Price</th>
+		<th class="text-center">Trend</th>
+		<th class="text-center" colspan=2>Change</th>
+		<th class="text-center">Bullish</th>
+		<th class="text-center">Bearish</th>
+		<th colspan=2>Message Count</th>
+		<th class="text-center">Last</th>
+	</tr>
+	<tr class="text-center">
+		<th class="text-center"></th>
+		<th class="text-center"></th>
+		<th class="text-center"></th>
+		<th class="text-center">(#)</th>
+		<th class="text-center">(%)</th>
+		<th class="text-center"></th>
+		<th class="text-center"></th>
+		<th class="text-center">(#)</th>
+		<th class="text-center">(%)</th>
+		<th class="text-center">Updated</th>
+	</tr>
+
+	</thead>
+ 	<tr *ngFor = "let stock of tickQuotes">
+ 		<td>{{stock.stock}}</td>
+ 		<td class="text-right">{{stock.price | currency:'USD':true}}</td>
+ 		<td>{{stock.stock_trend}}</td>
+ 		<td class="text-right">{{stock.change}}</td>
+ 		<td class="text-right" [ngClass]="{success:true}">{{stock.change_pct | percent:'2.2-2'}}</td>
+ 		<td class="text-right">{{stock.sentiment_bullish}}</td>
+ 		<td class="text-right">{{stock.sentiment_bearish}}</td>
+ 		<td class="text-right" [ngClass]="{danger:message_change_pct < 0 ? true:false}">{{stock.message_count}}</td>
+ 		<td class="text-right" [ngClass]="{danger:message_change_pct < 0 ? true:false}">{{stock.message_change_pct | percent:'2.2-2'}}</td>
+ 		<td class="text-right">{{stock.last_updated | date:'medium'}}</td> 		
+ 	</tr>
+ </table>

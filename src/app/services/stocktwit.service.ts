@@ -1,31 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Headers, Response, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/Rx';
 @Injectable()
 export class StocktwitService {
     private token;
-    private Authurl = "http://www.stocktwits.com";
-//    private TokenUrl = "http://gcsolution.net:3000/stocktwits/token";
-    constructor(  public _http: Http ) {
-        this.refreshToken();
+    constructor( private _http: Http ) {
 
     }
 
-    refreshToken() {
-        //Http request-
-        this._http.get( this.Authurl).subscribe(
-            ( response ) => this.processResponse( response ),
-            //            ( error ) => this.onGetForecastError( error.json() ),
-            //            () => this.onGetForecastComplete()
-        );
+    getTrend = function( callback ) {
+        var url = "http://localhost:3000/scrape";
+        this._http.get( url )
+            .subscribe( function( data ) {
+                callback( data._body );
+            },
+            function( error ) {
+                console.log( error );
+                callback( error );
+            }
+            );
     }
 
-    getToken = function() {
-        return this.token;
+    getQuotesData = function(symbolList, callback ) {
+        var url = "http://localhost:3000/scrape/quotes";
+        var params = new URLSearchParams;
+        params.set('symbols' , symbolList);
+        this._http.get( url, {search:params} )
+            .subscribe( function( data ) {
+                callback( data._body );
+            },
+            function( error ) {
+                console.log( error );
+                callback( error );
+            }
+            )
     }
-
-    processResponse( data ) {
-        console.log( data );
-    }
-
+    
 }
