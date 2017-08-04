@@ -33,7 +33,8 @@
 
 		</thead>
 		<tr *ngFor="let stock of tickQuotes | sort:['-change_pct']"
-			[ngClass]="{'success':stock.stock_trend=='Positive','danger':stock.stock_trend=='Negative'}">
+			[ngClass]="{'success':stock.stock_trend=='Positive','danger':stock.stock_trend=='Negative'}"
+			class = "details slide-index-{{stock.stock}}{{stock.change_pct}}{{stock.message_count}}">
 			<td>
 				<div class="text-warn">
 					<i class="fa fa-external-link fa-fw"></i> <a

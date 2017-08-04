@@ -3,3 +3,15 @@ table tr td {
 	padding-right: 15px;
 	font-size: 0.9em;
 }
+
+.details {
+  transition-timing-function: ease-in;
+  transition: opacity 3s;
+  opacity: 1;
+}
+
+.details[class*="-remove"] {
+  transition-timing-function: ease-out;
+  transition: opacity 3s; // No transition on class removal -> instant hiding
+  opacity: 0;
+}
