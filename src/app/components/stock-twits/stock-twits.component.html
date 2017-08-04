@@ -1,4 +1,4 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div style="height:800px">
 	<table class="table table-condensed table-hover table-striped">
 		<thead>
 			<tr>
@@ -32,8 +32,7 @@
 			</tr>
 
 		</thead>
-		<tr
-			*ngFor="let stock of tickQuotes | sort:['-change_pct']"
+		<tr *ngFor="let stock of tickQuotes | sort:['-change_pct']"
 			[ngClass]="{'success':stock.stock_trend=='Positive','danger':stock.stock_trend=='Negative'}">
 			<td>
 				<div class="text-warn">
@@ -60,4 +59,5 @@
 			<td class="text-right">{{stock.last_updated | date:'medium'}}</td>
 		</tr>
 	</table>
+
 </div>
