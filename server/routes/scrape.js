@@ -28,7 +28,7 @@ router.get('/', cors(), function(req, res, next) {
 			cb(null, trend);
 		});
 	}, function(trend, cb) {
-//		console.log(trend);
+//		(trend);
 		res.send(JSON.stringify(trend));
 	} ]);
 
@@ -36,14 +36,14 @@ router.get('/', cors(), function(req, res, next) {
 
 router.get('/quotes', cors(), function(req, res, next) {
 	async.waterfall([ function(cb) {
-//		console.log("Symbols ...");
+//		("Symbols ...");
 		var symbols = req.query.symbols;
 		symbols = symbols.split('"').join('');
 		symbols = symbols.split("'").join('');
 		symbols = symbols.split(',');
 		cb(null, symbols);
 	}, function(symbols, cb) {
-//		console.log("Data ...");
+//		("Data ...");
 //		var trend = [];
 		for (item = 0; item < symbols.length; item++) {
 			(function() {
@@ -54,11 +54,8 @@ router.get('/quotes', cors(), function(req, res, next) {
 				})
 			})();
 		}
-//		console.log(trend);
 		cb(null, trend);
 	} ], function(err, result) {
-//		console.log("Response ...");
-		console.log(result);
 		res.send(JSON.stringify(result));
 		trend = [];
 	});
@@ -77,7 +74,7 @@ function getSecurityData(html, callback) {
 	var $ = cheerio.load(html)
 	var data = $(".ticker-header").find(".symbol-box").first().text();
 	nib.stock = data.split(",")[0].replace("\n", '').split('\n')[0];
-	// console.log("Stock " + nib.stock);
+	// ("Stock " + nib.stock);
 	$(".ticker-header").find(".metric-change").find('.change.positive').filter(
 			function() {
 				data = $(this);
@@ -125,6 +122,7 @@ function getSecurityData(html, callback) {
 				data = $(this);
 				var txt = data.text().replace('last updated ', '')
 				nib.last_updated = dateFromString(txt);
+//				(nib.last_updated);
 			});
 	callback(nib);
 }
@@ -171,8 +169,15 @@ String.prototype.isEmpty = String.prototype.isEmpty || function() {
 }
 
 function dateFromString(str) {
+	var retVal
 	var m = str.match(/(\d+)\/(\d+)\/(\d+),\s+(\d+):(\d+):(\d+)(\s*)/i);
-	return Date(+m[1], +m[2], +m[3], +m[4], +m[5]);
+	try{
+		retVal = Date(+m[1], +m[2], +m[3], +m[4], +m[5]);
+	}
+	catch(e){
+		retVal = Date.now();
+	}
+	return retVal;
 }
 
 function getQuotes(symbols, callback) {
@@ -187,7 +192,7 @@ function getQuotes(symbols, callback) {
 			res_quotes.push(resp)
 		});
 	}
-//	console.log(res_quotes.length);
+//	(res_quotes.length);
 	callback(res_quotes);
 }
 
@@ -205,7 +210,6 @@ function getData(item) {
 			var $ = cheerio.load(html)
 			$(".metric-change").filter(function() {
 				data = $(this);
-//				console.log(data.text());
 			});
 		}
 	});

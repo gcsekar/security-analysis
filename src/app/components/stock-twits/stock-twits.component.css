@@ -1,4 +1,4 @@
-td{
-	.padding-left:10px;
-	.padding-right:5px
+table tr td {
+	padding-left: 15px;
+	padding-right: 15px;
 }
