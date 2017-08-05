@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { DatePipe, CurrencyPipe, PercentPipe } from '@angular/common';
 import { StocktwitService } from 'app/services/stocktwit.service';
+import { StockMetricsComponent } from 'app/components/stock-metrics/stock-metrics.component';
 import { SortBy } from 'app/pipes/sort.pipe';
 
 

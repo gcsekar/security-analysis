@@ -14,8 +14,12 @@ export class StockMetricsComponent implements OnInit {
     _stockTwitService: StocktwitService;
     @Output() positives: number = 0;
     @Output() negatives: number = 0;
-    private _utitities: UtilitiesModule = new UtilitiesModule;;
-
+    private _utitities: UtilitiesModule = new UtilitiesModule;
+    
+    
+    /**
+     *  Default constructor 
+     */
     constructor( _stockTwitService: StocktwitService ) {
         var parent = this;
         this._stockTwitService = _stockTwitService;
