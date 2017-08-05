@@ -1,6 +1,11 @@
-<div>
+<div *ngIf='!showbarchart'>
 	<p class="strong">
-		<span class="text-success">{{positives}} <i class="fa fa-arrow-up"></i></span> <span
-			class="text-danger">{{negatives}}<i class="fa fa-arrow-down"></i></span>
+		<span class="text-success">{{positives}} <i
+			class="fa fa-arrow-up"></i></span> <span class="text-danger">{{negatives}}<i
+			class="fa fa-arrow-down"></i></span>
 	</p>
 </div>
+<div #barchart> *ngIf='showbarchart'
+	<p>Chart will show here ...</p>
+</div>
+

@@ -12,7 +12,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
     styleUrls: ['./stock-twits.component.css']
 })
 
-export class StockTwitsComponent implements OnInit {
+export class StockTwitsComponent implements OnInit {   
     private trendTicks;
     private tickQuotes;
     private sub: Subscription;
